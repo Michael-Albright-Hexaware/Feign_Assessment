@@ -17,14 +17,14 @@ public class UserController {
     @Autowired
     private FeignService feignService;
 
-    @GetMapping("/see_product")
-    public String getProduct(@PathVariable Long id) {
-        return feignService.getProduct(id).getBody();
+    @GetMapping("/see_product/{id}")
+    public ResponseEntity<Object> getProduct(@PathVariable Long id) {
+        return feignService.getProduct(id);
     }
 
     @GetMapping("/see_all_products")
-    public List<String> getAllProducts() {
-        return feignService.getAllProducts().getBody();
+    public ResponseEntity<Object> getAllProducts() {
+        return feignService.getAllProducts();
     }
 
 }

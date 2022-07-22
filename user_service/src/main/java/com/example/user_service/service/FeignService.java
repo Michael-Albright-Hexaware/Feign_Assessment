@@ -3,6 +3,7 @@ package com.example.user_service.service;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -10,8 +11,8 @@ import java.util.List;
 public interface FeignService {
 
     @GetMapping("/{id}")
-    ResponseEntity<String> getProduct(Long id);
+    ResponseEntity<Object> getProduct(@PathVariable Long id);
 
     @GetMapping()
-    ResponseEntity<List<String>> getAllProducts();
+    ResponseEntity<Object> getAllProducts();
 }
