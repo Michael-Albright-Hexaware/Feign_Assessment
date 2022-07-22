@@ -1,0 +1,30 @@
+package com.example.user_service.controller;
+
+import com.example.user_service.service.FeignService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RequestMapping("/user")
+@RestController
+public class UserController {
+
+    @Autowired
+    private FeignService feignService;
+
+    @GetMapping("/see_product")
+    public String getProduct(@PathVariable Long id) {
+        return feignService.getProduct(id).getBody();
+    }
+
+    @GetMapping("/see_all_products")
+    public List<String> getAllProducts() {
+        return feignService.getAllProducts().getBody();
+    }
+
+}
